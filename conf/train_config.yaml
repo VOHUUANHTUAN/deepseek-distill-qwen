@@ -1,0 +1,17 @@
+model_name_or_path: Qwen/Qwen2.5-1.5B
+data_path: ./data/openr1_math_220k_distill.jsonl
+output_dir: ./qwen1.5B-deepseek-distill
+
+max_seq_length: 2048
+train_batch_size: 2
+eval_batch_size: 1
+
+learning_rate: 5e-5
+num_train_epochs: 1
+
+use_qlora: true
+distill: true
+use_rl: false
+
+logging_steps: 10
+save_steps: 200
