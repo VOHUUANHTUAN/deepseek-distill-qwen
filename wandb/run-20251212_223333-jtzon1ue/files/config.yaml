@@ -1,0 +1,60 @@
+_wandb:
+    value:
+        cli_version: 0.23.1
+        e:
+            1suldrxsujrzhns4g4cybadt1f89ta47:
+                codePath: train_distill.py
+                codePathLocal: train_distill.py
+                cpu_count: 112
+                cpu_count_logical: 224
+                cudaVersion: "12.9"
+                disk:
+                    /:
+                        total: "1356758433792"
+                        used: "154906238976"
+                email: chienvuive19052001@gmail.com
+                executable: /home/work/tuan/miniconda3/bin/python
+                git:
+                    commit: c54e04d73b45dd9bc6b66c96877e2d5221ed0c93
+                    remote: https://github.com/VOHUUANHTUAN/deepseek-distill-qwen.git
+                gpu: NVIDIA H200
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "75377410048"
+                      name: NVIDIA H200
+                      uuid: GPU-32c6cc26-16ba-b5d6-07e0-37c8e3f0882b
+                host: main1
+                memory:
+                    total: "2163961790464"
+                os: Linux-5.15.0-151-generic-x86_64-with-glibc2.39
+                program: /home/work/tuan/deepseek-distill-qwen/train_distill.py
+                python: CPython 3.13.9
+                root: /home/work/tuan/deepseek-distill-qwen
+                startedAt: "2025-12-12T13:33:33.774904Z"
+                writerId: 1suldrxsujrzhns4g4cybadt1f89ta47
+        m: []
+        python_version: 3.13.9
+        t:
+            "1":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 71
+                - 98
+            "2":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 71
+                - 98
+            "3":
+                - 61
+            "4": 3.13.9
+            "5": 0.23.1
+            "6": 4.57.3
+            "12": 0.23.1
+            "13": linux-x86_64

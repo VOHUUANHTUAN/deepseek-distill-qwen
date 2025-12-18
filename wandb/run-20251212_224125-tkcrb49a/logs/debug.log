@@ -1,0 +1,12 @@
+2025-12-12 22:41:25,632 INFO    MainThread:177065 [wandb_setup.py:_flush():80] Current SDK version is 0.23.1
+2025-12-12 22:41:25,632 INFO    MainThread:177065 [wandb_setup.py:_flush():80] Configure stats pid to 177065
+2025-12-12 22:41:25,633 INFO    MainThread:177065 [wandb_setup.py:_flush():80] Loading settings from /home/work/.config/wandb/settings
+2025-12-12 22:41:25,633 INFO    MainThread:177065 [wandb_setup.py:_flush():80] Loading settings from /home/work/tuan/deepseek-distill-qwen/wandb/settings
+2025-12-12 22:41:25,634 INFO    MainThread:177065 [wandb_setup.py:_flush():80] Loading settings from environment variables
+2025-12-12 22:41:25,634 INFO    MainThread:177065 [wandb_init.py:setup_run_log_directory():714] Logging user logs to /home/work/tuan/deepseek-distill-qwen/wandb/run-20251212_224125-tkcrb49a/logs/debug.log
+2025-12-12 22:41:25,634 INFO    MainThread:177065 [wandb_init.py:setup_run_log_directory():715] Logging internal logs to /home/work/tuan/deepseek-distill-qwen/wandb/run-20251212_224125-tkcrb49a/logs/debug-internal.log
+2025-12-12 22:41:25,634 INFO    MainThread:177065 [wandb_init.py:init():841] calling init triggers
+2025-12-12 22:41:25,634 INFO    MainThread:177065 [wandb_init.py:init():846] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2025-12-12 22:41:25,634 INFO    MainThread:177065 [wandb_init.py:init():889] starting backend
+2025-12-12 22:41:25,844 INFO    MainThread:177065 [wandb_init.py:init():892] sending inform_init request

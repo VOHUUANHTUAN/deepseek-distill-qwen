@@ -1,0 +1,1 @@
+{"train/kl_loss":0.19928397238254547,"train/ce_loss":0.443995863199234,"trainer/global_step":1,"_timestamp":1.7655466354237998e+09,"_wandb":{"runtime":304},"_runtime":304.284835911,"_step":1,"train/total_loss":0.3705822825431824}

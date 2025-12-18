@@ -1,5 +1,6 @@
 import torch
 import torch.nn.functional as F
+import wandb
 from datasets import load_dataset
 from transformers import (
     AutoModelForCausalLM, 
@@ -12,9 +13,16 @@ from transformers.trainer_callback import TrainerCallback
 from peft import LoraConfig, get_peft_model
 
 # ==========================================
+# 0. TORCH & WANDB SETUP
+# ==========================================
+
+wandb.init(project="deepseek-distill-qwen")
+
+
+# ==========================================
 # 1. MODEL CONFIGURATION
 # ==========================================
-teacher_model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
+teacher_model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 student_model_name = "Qwen/Qwen2.5-Math-1.5B"  
 
 print("="*60)
@@ -192,6 +200,15 @@ class DistillationTrainer(Trainer):
         loss_ce = torch.tensor(0.0, device=student_logits.device, requires_grad=True)
         
         if labels is not None:
+            # Match sequence length first
+            min_seq_len = min(student_logits.shape[1], teacher_logits.shape[1])
+            student_logits = student_logits[:, :min_seq_len, :]
+            teacher_logits = teacher_logits[:, :min_seq_len, :]
+
+            # ALSO cut labels to match seq_len  <-- THIS FIXES YOUR ERROR
+            labels = inputs["labels"]
+            labels = labels[:, :min_seq_len]
+
             # Shift for next token prediction
             shift_logits = student_logits[..., :-1, :].contiguous()
             shift_labels = labels[..., 1:].contiguous()
@@ -207,6 +224,19 @@ class DistillationTrainer(Trainer):
         
         # Combined loss - make sure both have requires_grad
         loss = self.alpha * loss_kl + (1 - self.alpha) * loss_ce
+        
+        # Log losses to wandb if enabled
+        step = self.state.global_step
+
+        wandb.log({
+            "train/total_loss": loss.detach().mean().item(),
+            "train/kl_loss": loss_kl.detach().mean().item(),
+            "train/ce_loss": loss_ce.detach().mean().item(),
+            "trainer/global_step": step,
+        }, step=step)
+        
+
+
         
         # Ensure loss requires grad before returning
         if not loss.requires_grad:
@@ -252,7 +282,7 @@ print("✓ Data collator configured")
 # 8. TRAINING ARGUMENTS
 # ==========================================
 training_args = TrainingArguments(
-    output_dir="distill-qwen7b",
+    output_dir="distill-qwen1.5b",
     per_device_train_batch_size=4,
     gradient_accumulation_steps=1,
     num_train_epochs=1,
@@ -265,12 +295,12 @@ training_args = TrainingArguments(
     save_total_limit=2,
     report_to="none",
     gradient_checkpointing=False,
-    optim="paged_adamw_8bit",
+    optim="adamw_torch",
     ddp_find_unused_parameters=False,
     max_grad_norm=1.0,
     seed=42,
     tf32=True,
-    max_steps=1000, 
+    max_steps=5000, 
 )
 
 # ==========================================
@@ -295,7 +325,7 @@ trainer = DistillationTrainer(
     data_collator=data_collator,
     teacher_model=teacher,
     temperature=4.0,
-    alpha=0.7,  # 70% KL loss + 30% CE loss
+    alpha=0.7,  # 30% KL loss + 70% CE loss
 )
 
 trainer.train()
@@ -307,10 +337,10 @@ print("\n" + "="*60)
 print("SAVING MODEL...")
 print("="*60)
 
-student.save_pretrained("qwen2.5-math-7b-distilled")
-student_tokenizer.save_pretrained("qwen2.5-math-7b-distilled")
+student.save_pretrained("qwen2.5-math-1.5b-distilled-v1")
+student_tokenizer.save_pretrained("qwen2.5-math-1.5b-distilled-v1")
 
-print("✓ Model saved to: qwen2.5-math-7b-distilled")
+print("✓ Model saved to: qwen2.5-math-1.5b-distilled")
 print("="*60)
 print("TRAINING COMPLETED!")
 print("="*60)

@@ -1,0 +1,34 @@
+============================================================
+LOADING MODELS...
+============================================================
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards: 100%|██████████████████| 8/8 [00:00<00:00, 87.50it/s]
+✓ Teacher model loaded (on CPU): deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
+✓ Student model loaded (on CPU): Qwen/Qwen2.5-Math-1.5B
+
+============================================================
+LOADING DATASET...
+============================================================
+✓ Dataset loaded. Size: 93733
+✓ Sample columns: ['problem', 'solution', 'answer', 'problem_type', 'question_type', 'source', 'uuid', 'is_reasoning_complete', 'generations', 'correctness_math_verify', 'correctness_llama', 'finish_reasons', 'correctness_count', 'messages', 'instruction', 'input', 'output']
+✓ Sample data:
+{'problem': '## Task B-1.3.\n\nA ship traveling along a river has covered $24 \\mathrm{~km}$ upstream and $28 \\mathrm{~km}$ downstream. For this journey, it took half an hour less than for traveling $30 \\mathrm{~km}$ upstream and $21 \\mathrm{~km}$ downstream, or half an hour more than for traveling $15 \\mathrm{~km}$ upstream and $42 \\mathrm{~km}$ downstream, assuming that both the ship and the river move uniformly.\n\nDetermine the speed of the ship in still water and the speed of the river.', 'solution': '## Solution.\n\nLet $t$ be the time required for the boat to travel $24 \\mathrm{~km}$ upstream and $28 \\mathrm{~km}$ downstream, $v_{R}$ the speed of the river, and $v_{B}$ the speed of the boat. When the boat is traveling upstream, its speed is $v_{B}-v_{R}$, and when it is traveling downstream, its speed is $v_{B}+v_{R}$.\n\nSince $t=\\frac{s}{v}$, from the given data, we obtain the following system of equations:\n\n$\\left\\{\\begin{array}{l}t=\\frac{24}{v_{B}-v_{R}}+\\frac{28}{v_{B}+v_{R}} \\\\ t+0.5=\\frac{30}{v_{B}-v_{R}}+\\frac{21}{v_{B}+v_{R}} \\\\ t-0.5=\\frac{15}{v_{B}-v_{R}}+\\frac{42}{v_{B}+v_{R}}\\end{array}\\right.$\n\nBy introducing new variables $x=\\frac{3}{v_{B}-v_{R}}, y=\\frac{7}{v_{B}+v_{R}}$, the system transforms into:\n\n$\\left\\{\\begin{array}{l}t=8 x+4 y \\\\ t+0.5=10 x+3 y \\\\ t-0.5=5 x+6 y\\end{array}\\right.$\n\nSubstituting $t$ from the first equation into the remaining two, we get:\n\n$\\left\\{\\begin{array}{l}8 x+4 y+0.5=10 x+3 y \\\\ 8 x+4 y-0.5=5 x+6 y\\end{array}\\right.$\n\n$\\left\\{\\begin{array}{l}2 x-y=0.5 \\\\ 3 x-2 y=0.5\\end{array}\\right.$\n\nThe solution to the last system is (0.5, 0.5). Then we have:\n\n$\\frac{3}{v_{B}-v_{R}}=0.5$, hence, $v_{B}-v_{R}=6 \\mathrm{~and}$\n\n$\\frac{7}{v_{B}+v_{R}}=0.5$, hence, $v_{B}+v_{R}=14$.\n\nThe speed of the river is $v_{R}=4 \\mathrm{~km} / \\mathrm{h}$, and the speed of the boat is $v_{B}=10 \\mathrm{~km} / \\mathrm{h}$.\n\n## Note:\n\nBy substituting $x=\\frac{1}{v_{B}-v_{R}}, y=\\frac{1}{v_{B}+v_{R}} \\mathrm{~and}$ following the same procedure, the initial system transforms into the system $\\left\\{\\begin{array}{l}6 x-7 y=0.5 \\\\ 9 x-14 y=0.5\\end{array}\\right.$\n\nThe solution to this system is $\\left(\\frac{1}{6}, \\frac{1}{14}\\right)$.', 'answer': 'v_{R}=4\\mathrm{~}/\\mathrm{},v_{B}=10\\mathrm{~}/\\mathrm{}', 'problem_type': 'Algebra', 'question_type': 'math-word-problem', 'source': 'olympiads', 'uuid': '586fd646-76d6-5070-8c81-9993ab9d8559', 'is_reasoning_complete': [True, True], 'generations': ['<think>\nOkay, so I need to find the speed of the ship in still water and the speed of the river. Let me start by recalling that when a ship is moving upstream, its effective speed is the speed of the ship minus the speed of the river. Conversely, when moving downstream, its effective speed is the ship\'s speed plus the river\'s speed. \n\nLet me denote the speed of the ship in still water as \\( v \\) (in km/h) and the speed of the river as \\( r \\) (also in km/h). Then, the upstream speed would be \\( v - r \\), and the downstream speed would be \\( v + r \\).\n\nThe problem mentions three different journeys:\n\n1. 24 km upstream and 28 km downstream, taking half an hour less than the second journey.\n2. 30 km upstream and 21 km downstream, which takes half an hour more than the first journey.\n3. 15 km upstream and 42 km downstream, which takes half an hour less than the first journey.\n\nWait, actually, the problem states: "For this journey, it took half an hour less than for traveling 30 km upstream and 21 km downstream, or half an hour more than for traveling 15 km upstream and 42 km downstream..."\n\nHmm, let me parse that again. The first journey (24 km upstream, 28 km downstream) took half an hour less than the journey with 30 km upstream and 21 km downstream. Alternatively, it took half an hour more than the journey with 15 km upstream and 42 km downstream. So, there are two comparisons here:\n\n- Time for 24 up + 28 down = Time for 30 up + 21 down - 0.5 hours\n- Time for 24 up + 28 down = Time for 15 up +
+
+✓ Dataset formatted. New columns: ['prompt', 'label']
+
+============================================================
+TOKENIZING DATASET...
+============================================================
+✓ Dataset tokenized. New columns: ['input_ids', 'attention_mask', 'labels']
+
+============================================================
+CONFIGURING LORA...
+============================================================
+trainable params: 8,716,288 || all params: 1,552,430,592 || trainable%: 0.5615
+✓ Data collator configured
+
+============================================================
+STARTING TRAINING...
+============================================================
+Using device: cuda
+  0%|                                       | 1/5000 [01:05<91:30:53, 65.90s/it]

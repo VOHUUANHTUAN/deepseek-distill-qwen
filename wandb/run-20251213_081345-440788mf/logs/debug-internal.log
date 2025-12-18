@@ -1,0 +1,12 @@
+{"time":"2025-12-13T08:13:45.977491407+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.1"}
+{"time":"2025-12-13T08:13:46.359711827+09:00","level":"INFO","msg":"stream: created new stream","id":"440788mf"}
+{"time":"2025-12-13T08:13:46.360371788+09:00","level":"INFO","msg":"handler: started","stream_id":"440788mf"}
+{"time":"2025-12-13T08:13:46.360700627+09:00","level":"INFO","msg":"stream: started","id":"440788mf"}
+{"time":"2025-12-13T08:13:46.360711694+09:00","level":"INFO","msg":"writer: started","stream_id":"440788mf"}
+{"time":"2025-12-13T08:13:46.36072579+09:00","level":"INFO","msg":"sender: started","stream_id":"440788mf"}
+{"time":"2025-12-13T10:03:02.13867836+09:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/chienvuive19052001-korea-university/deepseek-distill-qwen/440788mf/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-12-14T09:01:45.618582122+09:00","level":"INFO","msg":"stream: closing","id":"440788mf"}
+{"time":"2025-12-14T09:01:46.577482971+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-12-14T09:01:46.868651468+09:00","level":"INFO","msg":"handler: closed","stream_id":"440788mf"}
+{"time":"2025-12-14T09:01:46.869086017+09:00","level":"INFO","msg":"sender: closed","stream_id":"440788mf"}
+{"time":"2025-12-14T09:01:46.869097757+09:00","level":"INFO","msg":"stream: closed","id":"440788mf"}
