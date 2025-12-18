@@ -3,14 +3,6 @@
     Script for Interacting with the DeepSeek API
 ===============================================================================
 
-Author:
--------
-houalex@gmail.com
-
-Date:
------
-Feb 14, 2025
-
 Description:
 -------------
 This script interacts with the DeepSeek API to submit queries and retrieve answers.

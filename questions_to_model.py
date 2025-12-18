@@ -3,14 +3,6 @@
     Script for Generating Questions from Lean Theorems and Proofs
 ===============================================================================
 
-Author:
--------
-houalex@gmail.com
-
-Date:
------
-Feb 14, 2025
-
 Description:
 -------------
 This script loads the 'deepseek-ai/DeepSeek-Prover-V1' dataset from Hugging Face, 

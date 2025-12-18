@@ -3,14 +3,6 @@
     Model Comparison Script for Qwen Models (Original vs. Distilled)
 ===============================================================================
 
-Author:
--------
-houalex@gmail.com
-
-Date:
------
-Feb 14, 2025
-
 Description:
 -------------
 This Python script compares two versions of the Qwen model (original vs. distilled) across multiple performance metrics.

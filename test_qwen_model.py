@@ -3,14 +3,6 @@
     Script for Generating Responses using Fine-tuned Qwen Model
 ===============================================================================
 
-Author:
--------
-houalex@gmail.com
-
-Date:
------
-Feb 14, 2025
-
 Description:
 -------------
 This script loads a fine-tuned Qwen model, which was trained on specific datasets, 

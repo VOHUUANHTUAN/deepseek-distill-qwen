@@ -3,14 +3,6 @@
     Script for Fine-Tuning Qwen Model with DeepSeek Dataset
 ===============================================================================
 
-Author:
--------
-houalex@gmail.com
-
-Date:
------
-Feb 14, 2025
-
 Description:
 -------------
 This script fine-tunes the Qwen 2.5B model using the DeepSeek dataset, which contains 
